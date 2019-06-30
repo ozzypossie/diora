@@ -102,6 +102,7 @@ def run_train(options, train_iterator, trainer, validation_iterator):
             step += 1
 
         experiment_logger.log_epoch(epoch, step)
+        trainer.save_model(os.path.join(options.experiment_path, 'model_periodic.pt'))
 
         if options.max_step is not None and step >= options.max_step:
             logger.info('Max-Step={} Quitting.'.format(options.max_step))
